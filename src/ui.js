@@ -35,65 +35,143 @@ NetworkTables.addKeyListener('/Pi-Dashboard/gyro', (key, value) => {
 //   document.getElementById('test').innerHTML = value;
 // });
 
+var keyName = [];
+
 window.onkeyup = function(event) {
     let key = event.key;
-    if (key == 'a') {
-      highlight('left-rocket-top');
-    }
-    if (key == 'j') {
-      highlight('left-rocket-middle');
-    }
-    if (key == 's') {
-      highlight('left-rocket-bottom');
-    }
-    if (key == 'b') {
-      highlight('left-cargo-far');
-    }
-    if (key == 'k') {
-      highlight('left-cargo-mid');
-    }
-    if (key == 't') {
-      highlight('left-cargo-close');
-    }
-    if (key == '2') {
-      highlight('left-cargo-alliance');
-    }
-    if (key == '3') {
-      highlight('right-cargo-alliance');
-    }
-    if (key == 'c') {
-      highlight('right-cargo-far');
-    }
-    if (key == 'l') {
-      highlight('right-cargo-mid');
-    }
-    if (key == 'u') {
-      highlight('right-cargo-close');
-    }
-    if (key == 'd') {
-      highlight('right-rocket-top');
-    }
-    if (key == 'm') {
-      highlight('right-rocket-middle');
-    }
-    if (key == 'v') {
-      highlight('right-rocket-bottom');
-    }
-    if (key == '1') {
-      highlight('left-loading-station');
-    }
-    if (key == '4') {
-      highlight('right-loading-station');
-    }
+    keyName.push(key);
 
     if (key == '9') {
       document.getElementById('test').innerHTML = '9 pressed';
       clearHighlight();
+      //in the foreloop call pop
+      for(i=0; i <=Array.length; i++){
+        keyName.pop();
+      }
+    }
+    if (key == '0') {
+      document.getElementById('test').innerHTML = '9 pressed';
+      clearHighlight();
+      keyName.pop();
+
+    }
+    if(key == 'w'){
+      document.getElementById('test').innerHTML = 'w pressed';
+      clearHighlight();
     }
 }
 
-function highlight(toHighlight) {
+//create a loop to go through the array and then for each element call the appropriate highlight method
+
+var start = keyName[0];
+var end = keyName[1];
+
+  if (start == 'a') {
+    highlight('left-rocket-top', 'green');
+  }
+  if (start == 'j') {
+    highlight('left-rocket-middle', 'green');
+  }
+  if (start == 's') {
+    highlight('left-rocket-bottom', 'green');
+  }
+  if (start == 'b') {
+    highlight('left-cargo-far', 'green');
+  }
+  if (start == 'k') {
+    highlight('left-cargo-mid', 'green');
+  }
+  if (start == 't') {
+    highlight('left-cargo-close', 'green');
+  }
+  if (start == '2') {
+    highlight('left-cargo-alliance', 'green');
+  }
+  if (start == '3') {
+    highlight('right-cargo-alliance', 'green');
+  }
+  if (start == 'c') {
+    highlight('right-cargo-far', 'green');
+  }
+  if (start == 'l') {
+    highlight('right-cargo-mid', 'green');
+  }
+  if (start == 'u') {
+    highlight('right-cargo-close', 'green');
+  }
+  if (start == 'd') {
+    highlight('right-rocket-top', 'green');
+  }
+  if (start == 'm') {
+    highlight('right-rocket-middle', 'green');
+  }
+  if (start == 'v') {
+    highlight('right-rocket-bottom', 'green');
+  }
+  if (start == '1') {
+    highlight('left-loading-station', 'green');
+  }
+  if (start == '4') {
+    highlight('right-loading-station' , 'green');
+  }
+///////////////////////////////////////
+  if (end == 'a') {
+    highlight('left-rocket-top', 'red');
+  }
+  if (end == 'j') {
+    highlight('left-rocket-middle' , 'red');
+  }
+  if (end == 's') {
+    highlight('left-rocket-bottom', 'red');
+  }
+  if (end == 'b') {
+    highlight('left-cargo-far', 'red');
+  }
+  if (end == 'k') {
+    highlight('left-cargo-mid', 'red');
+  }
+  if (end == 't') {
+    highlight('left-cargo-close', 'red');
+  }
+  if (end == '2') {
+    highlight('left-cargo-alliance', 'red');
+  }
+  if (end == '3') {
+    highlight('right-cargo-alliance', 'red');
+  }
+  if (end == 'c') {
+    highlight('right-cargo-far', 'red');
+  }
+  if (end == 'l') {
+    highlight('right-cargo-mid', 'red');
+  }
+  if (end == 'u') {
+    highlight('right-cargo-close', 'red');
+  }
+  if (end == 'd') {
+    highlight('right-rocket-top', 'red');
+  }
+  if (end == 'm') {
+    highlight('right-rocket-middle', 'red');
+  }
+  if (end == 'v') {
+    highlight('right-rocket-bottom', 'red');
+  }
+  if (end == '1') {
+    highlight('left-loading-station', 'red');
+  }
+  if (end == '4') {
+    highlight('right-loading-station', 'red');
+  }
+
+
+function highlight(toHighlight, color) {
   var location = document.getElementById(toHighlight);
+  if(color == 'red'){
+    location.style.fill = `rgb(255,0,0)`;
+
+  }
+  else if(color == 'green')
   location.style.fill = `rgb(0,255,0)`;
 }
 
